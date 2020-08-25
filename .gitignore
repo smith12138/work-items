@@ -1,0 +1,10 @@
+*.json
+*.txt
+*.jpeg
+*.png
+*.html
+
+
+.idea/
+.vscode/
+__pycache__/

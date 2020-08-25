@@ -1,0 +1,21 @@
+[INFO  - 2020-07-30T10:16:58.604Z] GhostDriver - Main - running on port 9421
+[INFO  - 2020-07-30T10:17:03.128Z] Session [cff02cc0-d24d-11ea-b24e-e7efc7dfebb7] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2020-07-30T10:17:03.128Z] Session [cff02cc0-d24d-11ea-b24e-e7efc7dfebb7] - page.customHeaders:  - {}
+[INFO  - 2020-07-30T10:17:03.128Z] Session [cff02cc0-d24d-11ea-b24e-e7efc7dfebb7] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"windows-10-32bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2020-07-30T10:17:03.128Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: cff02cc0-d24d-11ea-b24e-e7efc7dfebb7
+[ERROR - 2020-07-30T10:17:05.071Z] Session [cff02cc0-d24d-11ea-b24e-e7efc7dfebb7] - page.onError - msg: TypeError: undefined is not an object (evaluating 't._config.async_dc')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-07-30T10:17:05.071Z] Session [cff02cc0-d24d-11ea-b24e-e7efc7dfebb7] - page.onError - stack:
+  init (https://g.alicdn.com/shop/wangpu/1.9.4/??hdc-bridge-min.js?t=20140523.js:1)
+  retry (https://g.alicdn.com/shop/wangpu/1.9.4/??hdc-bridge-min.js?t=20140523.js:1)
+  newDc (https://g.alicdn.com/shop/wangpu/1.9.4/??hdc-bridge-min.js?t=20140523.js:1)
+  _ioReady (https://g.alicdn.com/kissy/k/1.4.14/io-min.js:40)
+  _callback (https://g.alicdn.com/kissy/k/1.4.14/io-min.js:27)
+  success (https://g.alicdn.com/kissy/k/1.4.14/io-min.js:27)
+  (anonymous function) (https://g.alicdn.com/??kissy/k/1.4.14/seed-min.js,sd/sufei/0.2.4/app/common/sufei-kissy.js,mtb/lib-promise/3.1.1/polyfillB.js,mtb/lib-mtop/2.4.2/mtop.js,mtb/videox/0.3.55/videox-pc.js:71)
+  each (https://g.alicdn.com/??kissy/k/1.4.14/seed-min.js,sd/sufei/0.2.4/app/common/sufei-kissy.js,mtb/lib-promise/3.1.1/polyfillB.js,mtb/lib-mtop/2.4.2/mtop.js,mtb/videox/0.3.55/videox-pc.js:12)
+  t (https://g.alicdn.com/??kissy/k/1.4.14/seed-min.js,sd/sufei/0.2.4/app/common/sufei-kissy.js,mtb/lib-promise/3.1.1/polyfillB.js,mtb/lib-mtop/2.4.2/mtop.js,mtb/videox/0.3.55/videox-pc.js:71)
+  c (https://g.alicdn.com/??kissy/k/1.4.14/seed-min.js,sd/sufei/0.2.4/app/common/sufei-kissy.js,mtb/lib-promise/3.1.1/polyfillB.js,mtb/lib-mtop/2.4.2/mtop.js,mtb/videox/0.3.55/videox-pc.js:70)
+
+  phantomjs://platform/console++.js:263 in error
