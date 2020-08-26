@@ -57,21 +57,24 @@ class GetCmd(object):
 class ThreadRecord(threading.Thread):
     """多线程更改机器人信息"""
     def __init__(self, list_data, port_id):
+        super(ThreadRecord, self).__init__()
         self.list_data = list_data
         port_id += 20000
-        self.conn = redis.Redis(host=REDIS_PWD, password=REDIS_PWD, port=port_id, decode_responses=True)
+        self.conn = redis.Redis(host=REDIS_HOST, password=REDIS_PWD, port=port_id, decode_responses=True)
 
     def send_record_info(self):
         """发送修改请求"""
         for dict_data in self.list_data:
-            robot_id = 'hu:' + dict_data['aiId']
+            robot_id = 'hu:' + dict_data['uid']
             try:
                 if self.conn.exists(robot_id):
                     for key, value in dict_data.items():
+                        if key == 'uid':
+                            continue
                         self.conn.hset(robot_id, key, value)
-                        print('robot:{} revise success')
+                    print('robot:{} revise success'.format(robot_id))
             except KeyError as e:
-                print('robot:{} revise error'.format(robot_id), '\n', e)
+                print('robot:{} revise error--------------'.format(robot_id), '\n', e)
         self.conn.close()
 
     def run(self):
@@ -94,9 +97,26 @@ class SaveRobotInfo(threading.Thread):
         user_key = self.conn.keys('hu:*')
         convert_data = [u.encode('utf-8') for u in user_key]
         user_id = [''.join(re.findall(r'\d', us)) for us in convert_data]
-        robot_list = [self.conn.hgetall('hu:{}'.format(uid)) for uid in user_id if uid and 0 < int(uid) <= 10000]
+        robot_list = [self.filter_data(self.conn.hgetall('hu:{}'.format(uid)))
+                      for uid in user_id if uid and 0 < int(uid) <= 10000]
+
         global LIST_DATA
         LIST_DATA = robot_list
+
+    def filter_data(self, dict_data):
+        """过滤不需要的key, value"""
+        filter_dict = {
+            'uid': dict_data['uid'],
+            'show_id': dict_data['show_id'],
+            'enter_low_coin': dict_data['enter_low_coin'],
+            'enter_high_coin': dict_data['enter_high_coin'],
+            'mode': dict_data['mode'],
+            'flower': dict_data['flower'],
+            'avatar': dict_data['avatar'],
+            'name': dict_data['name'],
+            'status': dict_data['status']
+        }
+        return filter_dict
 
     def run(self):
         """启动方法"""
