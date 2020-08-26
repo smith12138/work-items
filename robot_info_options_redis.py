@@ -24,7 +24,7 @@ import redis
 REDIS_HOST = '127.0.0.1'
 REDIS_PWD = 'huobao@zjh8888'
 STATUS = None
-LIST_DATA = None
+LIST_DATA = list()
 
 
 class GetCmd(object):
@@ -101,7 +101,7 @@ class SaveRobotInfo(threading.Thread):
                       for uid in user_id if uid and 0 < int(uid) <= 10000]
 
         global LIST_DATA
-        LIST_DATA = robot_list
+        LIST_DATA.extend(robot_list)
 
     def filter_data(self, dict_data):
         """过滤不需要的key, value"""
