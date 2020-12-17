@@ -43,3 +43,32 @@ def kquan_bf():
 #         print(times / tasks_number)
 #     except Exception as e:
 #         print('2', e)
+
+
+import threading
+import time
+
+
+def irr():
+    print('irr')
+
+
+def aps():
+    print('aps')
+    while True:
+        time.sleep(6)
+        irr()
+
+
+def view():
+    t2 = threading.Thread(target=aps)
+    t2.daemon = True
+    t2.start()
+    print('test1')
+
+
+t = threading.Thread(target=view)
+t.daemon = True
+t.start()
+while True:
+    time.sleep(1)
